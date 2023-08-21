@@ -1,0 +1,115 @@
+﻿
+@model IEnumerable<ZContactos.Models.Usuario>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Formulario de Contactos</h1>
+<div class="btn-toolbar">
+<div class="row">
+    <div class="col-12">
+        <div class="float-right">
+            <a asp-action="Create" asp-controller="Home" class="btn btn-success">Agregar Nuevo Contacto</a>
+        </div>
+
+    </div>
+</div>
+
+<span></span>
+
+<div class="row">
+    <div class="col-12">
+        <div class="float-left">
+            <a asp-action="ExportarPersonasAExcel" asp-controller="Home" class="btn btn-primary">Descargar Contactos</a>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3> <strong>Lista de contactos</strong></h3>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                @if(Model.Count()>0)
+                {
+                    <table class="table table-bordered" id="tablaContactos" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => m.nombre)</th>
+                                <th>@Html.DisplayNameFor(m => m.apellidoPaterno)</th>
+                                <th>@Html.DisplayNameFor(m => m.apellidoMaterno)</th>
+                                <th>@Html.DisplayNameFor(m => m.telefono)</th>
+                                <th>@Html.DisplayNameFor(m => m.celular)</th>
+                                <th>@Html.DisplayNameFor(m => m.correo)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.nombre)</td>
+                                    <td>@Html.DisplayFor(m => item.apellidoPaterno)</td>
+                                    <td>@Html.DisplayFor(m => item.apellidoMaterno)</td>
+                                    <td>@Html.DisplayFor(m => item.telefono)</td>
+                                    <td>@Html.DisplayFor(m => item.celular)</td>
+                                    <td>@Html.DisplayFor(m => item.correo)</td>
+                                    <td>
+                                        <a class="btn btn-primary"asp-action="Edit" asp-route-id="@item.id">Editar</a>
+                                        <a class="btn btn-info"asp-action="Details" asp-route-id="@item.id">Detalle</a>
+                                        <a class="btn btn-danger"asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+               
+                    </table>
+                }
+                else
+                {
+                    <p>No hay registros</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            //Llamar a datatable
+            $('#tablaContactos').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });        
+    </script>
+}
+
+

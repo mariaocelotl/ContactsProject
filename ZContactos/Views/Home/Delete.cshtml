@@ -1,0 +1,65 @@
+﻿
+@model ZContactos.Models.Usuario
+
+@{
+    ViewData["Title"] = "Editar contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center"> Contactos</h1>
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3> <strong>Eliminar contacto</strong></h3>
+            </div>
+
+        </div>
+        <div class="card-body">
+           <form asp-action="Delete">
+               <input type="hidden" value="id"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" readonly />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellidoPaterno" class="control-label"></label>
+                <input asp-for="apellidoPaterno" class="form-control" readonly />
+                <span asp-validation-for="apellidoPaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellidoMaterno" class="control-label"></label>
+                <input asp-for="apellidoMaterno" class="form-control" readonly />
+                <span asp-validation-for="apellidoMaterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" readonly />
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="celular" class="control-label"></label>
+                <input asp-for="celular" class="form-control" readonly />
+                <span asp-validation-for="celular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correo" class="control-label"></label>
+                <input asp-for="correo" class="form-control"  readonly/>
+                <span asp-validation-for="correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Eliminar contacto</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Regresar a la lista</a>
+</div>
+
+
