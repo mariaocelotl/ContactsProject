@@ -10,3 +10,7 @@ add migration Primera migracion
 update-database
 
 5. Tener las dependencias de Postgres instaladas de acuerdo a la version en la que se esta trabajando.
+
+6. Iniciar la applicacion ZContactos.
+  
+8. Podemos, agregar, editar, borrar y buscar un contacto, con los botones respectivos.
